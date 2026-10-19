@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>✔ To-Do</h1>
+    <div class="topbar__right">
+      <button id="theme-toggle" class="btn btn--ghost" type="button" aria-label="Сменить тему">🌓</button>
+      <span id="user-name" class="user-name" hidden></span>
+      <button id="logout-btn" class="btn btn--ghost" type="button" hidden>Выйти</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Авторизация -->
+    <section id="auth-view" class="card auth" hidden>
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" data-tab="login" role="tab" type="button">Вход</button>
+        <button class="tab" data-tab="register" role="tab" type="button">Регистрация</button>
+      </div>
+
+      <form id="login-form" class="form" novalidate>
+        <label class="field">Email
+          <input name="email" type="email" autocomplete="email">
+          <span class="field__error" data-error-for="email"></span>
+        </label>
+        <label class="field">Пароль
+          <input name="password" type="password" autocomplete="current-password">
+          <span class="field__error" data-error-for="password"></span>
+        </label>
+        <p class="form__error" data-form-error></p>
+        <button class="btn btn--primary" type="submit">Войти</button>
+      </form>
+
+      <form id="register-form" class="form" novalidate hidden>
+        <label class="field">Имя
+          <input name="name" type="text" autocomplete="name">
+          <span class="field__error" data-error-for="name"></span>
+        </label>
+        <label class="field">Email
+          <input name="email" type="email" autocomplete="email">
+          <span class="field__error" data-error-for="email"></span>
+        </label>
+        <label class="field">Пароль
+          <input name="password" type="password" autocomplete="new-password">
+          <span class="field__error" data-error-for="password"></span>
+        </label>
+        <label class="field">Повторите пароль
+          <input name="confirm" type="password" autocomplete="new-password">
+          <span class="field__error" data-error-for="confirm"></span>
+        </label>
+        <p class="form__error" data-form-error></p>
+        <button class="btn btn--primary" type="submit">Создать аккаунт</button>
+      </form>
+    </section>
+
+    <!-- Задачи -->
+    <section id="tasks-view" class="card" hidden>
+      <form id="task-form" class="task-form" novalidate>
+        <input name="title" type="text" placeholder="Что нужно сделать?" maxlength="200" aria-label="Новая задача">
+        <button class="btn btn--primary" type="submit">Добавить</button>
+      </form>
+      <p class="form__error" id="task-error"></p>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Поиск по задачам…" aria-label="Поиск">
+        <div class="filters" id="filters" role="group" aria-label="Фильтр">
+          <button class="chip is-active" data-filter="all" type="button">Все</button>
+          <button class="chip" data-filter="active" type="button">Активные</button>
+          <button class="chip" data-filter="completed" type="button">Выполненные</button>
+        </div>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+
+      <footer class="task-footer">
+        <span id="task-counter"></span>
+        <button id="clear-completed" class="btn btn--ghost" type="button">Удалить выполненные</button>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
